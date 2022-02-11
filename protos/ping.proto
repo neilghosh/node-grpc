@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package ping;
+
+service PingServer {
+   rpc doPing(Ping) returns (Pong) {}
+}
+
+message Ping {
+    string greetings = 1;
+}
+
+message Pong {
+    string acknowledgement = 1;
+}
+
+
