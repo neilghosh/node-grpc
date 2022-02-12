@@ -18,14 +18,16 @@ Response: Thank you for Namaste
 ### Run in docker
 
 ```
-docker build -t gcr.io/$GCP_PROJECT/grpc-ping:latest
+docker build . -t gcr.io/$GCP_PROJECT/grpc-ping:latest
 docker run -d -p 50051:50051 -e PORT=50051 gcr.io/$GCP_PROJECT/grpc-ping          
 ```
+
+install [grpcurl-tools](https://www.npmjs.com/package/grpcurl-tools)
 
 ```
 grpcurl \                                                                                        
     -plaintext -proto protos/ping.proto \
-    -d '{"greetings": Hello""}' \
+    -d '{"greetings": "Hello"}' \
     localhost:50051 \
     ping.PingServer.doPing
 ```
