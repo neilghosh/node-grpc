@@ -1,0 +1,18 @@
+# The configuration schema is defined by the service.proto file.
+# https://github.com/googleapis/googleapis/blob/master/google/api/service.proto
+
+type: google.api.Service
+config_version: 3
+name: api-service-b3zzuedwgq-uc.a.run.app
+title: Cloud Endpoints + Cloud Run gRPC
+apis:
+  - name: ping.PingServer
+usage:
+  rules:
+  # ListShelves methods can be called without an API Key.
+  - selector: ping.PingServer.doPing
+    allow_unregistered_calls: true
+backend:
+  rules:
+    - selector: "*"
+      address: grpcs://ping-upstream-b3zzuedwgq-uc.a.run.app
